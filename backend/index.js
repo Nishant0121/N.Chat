@@ -23,7 +23,7 @@ app.use(cookieParser());
 app.use(
   cors({
     credentials: true,
-    origin: "https://n-chat-sable.vercel.app/", // Replace with your frontend's actual origin
+    origin: "https://n-chat-sable.vercel.app", // Replace with your frontend's actual origin
   })
 );
 
