@@ -38,11 +38,12 @@ export const registerUser = async (req, res) => {
     // Generate JWT token
     const token = generateToken(newUser);
 
-    // Set cookie
+    // Set cookie (secure and cross-site enabled for production)
     res.cookie("token", token, {
       httpOnly: true,
-      sameSite: true,
-      maxAge: 15 * 24 * 60 * 60 * 1000,
+      sameSite: "None", // Allow cross-site cookies
+      secure: true, // Cookies only sent over HTTPS
+      maxAge: 15 * 24 * 60 * 60 * 1000, // 15 days
     });
 
     res.status(201).json({
@@ -67,10 +68,12 @@ export const loginUser = async (req, res) => {
     }
 
     const token = generateToken(user);
+
     res.cookie("token", token, {
       httpOnly: true,
-      sameSite: true,
-      maxAge: 15 * 24 * 60 * 60 * 1000,
+      sameSite: "None", // Allow cross-site cookies
+      secure: true, // Cookies only sent over HTTPS
+      maxAge: 15 * 24 * 60 * 60 * 1000, // 15 days
     });
 
     const { password: _, ...userData } = user._doc;
@@ -82,6 +85,10 @@ export const loginUser = async (req, res) => {
 
 export const logoutUser = (req, res) => {
   // Clear the cookie
-  res.clearCookie("token");
-  res.send("Logout successful");
+  res.clearCookie("token", {
+    httpOnly: true,
+    sameSite: "None", // Ensure cross-site cookies are cleared
+    secure: true, // Secure flag for HTTPS
+  });
+  res.status(200).send("Logout successful");
 };
