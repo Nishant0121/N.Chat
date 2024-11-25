@@ -12,7 +12,7 @@ import axios from "axios";
 function App() {
   const { authUser } = useContext(AuthContext);
 
-  axios.defaults.baseURL = "http://localhost:4000";
+  axios.defaults.baseURL = "https://n-chat-av13.onrender.com";
   axios.defaults.withCredentials = true;
 
   return (
