@@ -43,7 +43,10 @@ export default function Sidebar() {
         isSidebarOpen ? "absolute" : "hidden"
       } bg-white  md:bg-transparent  rounded-lg md:relative z-10 top-0 left-0  h-[95vh] w-[90vw] sm:w-fit flex flex-col items-center justify-start`}
     >
-      <Link to="/allusers" className="p-2 bg-green-500 px-3 text-white">
+      <Link
+        to="/allusers"
+        className="p-2 bg-green-500 px-3 rounded-md text-white"
+      >
         All Users
       </Link>
       <SearchInput />

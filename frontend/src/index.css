@@ -32,3 +32,18 @@ body {
   border: 3px solid transparent;
   background-clip: content-box;
 }
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  font-family: "Arial", sans-serif;
+}
+
+#root {
+  height: 100%;
+  width: 100%;
+}
