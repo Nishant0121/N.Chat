@@ -14,7 +14,7 @@
   cd N.Chat
 ```
 
-## Set Up Environment Variables Create a .env file in the root directory with the following:
+## Set Up Environment Variables Create a .env file in the backend directory with the following:
 ```bash
   MONGO_URI=<your-mongodb-uri>
   JWT_SECRET=<your-jwt-secret>
