@@ -17,7 +17,7 @@ function App() {
 
   return (
     <div className="h-screen w-screen flex items-center justify-center overflow-hidden">
-      <div className="h-full w-full p-4 md:p-6 bg-white-100 rounded-lg bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-40 shadow-lg">
+      <div className="h-full w-full p-1 sm:p-1 md:p-4 bg-white-100 rounded-lg bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-40 shadow-lg">
         <Routes>
           <Route
             path="/"
