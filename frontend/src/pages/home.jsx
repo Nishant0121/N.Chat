@@ -14,8 +14,8 @@ export default function Home() {
     <div className="flex relative items-center justify-center min-w-[90vw] mx-auto min-h-[100vh]  ">
       <div
         className={`absolute ${
-          isSidebarOpen ? "bottom-0" : "top-0"
-        }  md:hidden right-0 p-1.5 rounded-lg bg-transparent border-rose-50 border text-white z-50 cursor-pointer`}
+          isSidebarOpen ? "bottom-10" : "top-10"
+        }  md:hidden right-0 p-1.5 rounded-lg bg-slate-500 border-black border text-black z-50 cursor-pointer`}
         onClick={toggleSidebar}
       >
         <IoMenu className="h-6 w-6" />

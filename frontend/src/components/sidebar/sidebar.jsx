@@ -13,24 +13,29 @@ export default function Sidebar() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const { setAuthUser } = useContext(AuthContext);
-
   const { isSidebarOpen } = useConversation();
 
   const handleLogout = async () => {
     setLoading(true);
     try {
       const response = await axios.get("/api/auth/logout");
-      console.log(response);
+      console.log("Logout Response:", response);
+
+      // Clear localStorage and Auth Context
       localStorage.removeItem("chat-user-info");
       setAuthUser(null);
+
+      // Redirect to login page
       navigate("/login");
-      toast.success("Logout successfully");
+
+      // Display success message
+      toast.success("Logged out successfully!");
     } catch (error) {
-      console.log(error);
+      console.error("Logout Error:", error);
       toast.error(
         error.response && error.response.data
           ? error.response.data
-          : error.message
+          : "An error occurred during logout"
       );
     } finally {
       setLoading(false);
@@ -40,28 +45,46 @@ export default function Sidebar() {
   return (
     <div
       className={`${
-        isSidebarOpen ? "absolute" : "hidden"
-      } bg-white  md:bg-transparent  rounded-lg md:relative z-10 top-0 left-0  h-[95vh] w-[90vw] sm:w-fit flex flex-col items-center justify-start`}
+        isSidebarOpen ? "absolute md:relative" : "hidden"
+      } bg-white md:bg-transparent rounded-lg z-10 top-0 left-0 h-[95vh] w-full sm:w-72 flex flex-col items-center shadow-md transition-transform duration-300`}
     >
-      <Link
-        to="/allusers"
-        className="p-2 bg-green-500 px-3 rounded-md text-white"
-      >
-        All Users
-      </Link>
-      <SearchInput />
-      <div className="divider px-3 mt-1 mb-1"></div>
+      {/* Header Section */}
+      <div className="flex justify-between items-center w-full px-4 py-2 bg-green-500 text-white rounded-t-lg">
+        <Link
+          to="/allusers"
+          className="px-4 py-2 bg-green-700 hover:bg-green-800 rounded-md transition"
+        >
+          All Users
+        </Link>
+        <button
+          className="flex items-center px-3 py-2 bg-red-600 hover:bg-red-700 rounded-md transition"
+          onClick={handleLogout}
+        >
+          {loading ? (
+            <>
+              <span className="mr-2">Logging Out...</span>
+              <Loader />
+            </>
+          ) : (
+            <>
+              <CiLogout className="h-6 w-6 mr-2" />
+              Logout
+            </>
+          )}
+        </button>
+      </div>
 
-      <UserConversation />
-      <div
-        className=" bg-slate-600 w-full p-2 rounded-lg absolute bottom-0 flex items-center"
-        onClick={handleLogout}
-      >
-        <CiLogout className="h-6 w-6 font-bold text-white" />
-        <h1 className="ml-2 text-white flex items-center justify-center">
-          {loading ? "Logining Out...." : "Logout"}
-          <span>{loading ? <Loader /> : ""}</span>
-        </h1>
+      {/* Search Input */}
+      <div className="mt-4 w-full px-4">
+        <SearchInput />
+      </div>
+
+      {/* Divider */}
+      <div className="w-full border-t my-4"></div>
+
+      {/* User Conversations */}
+      <div className="flex-1 w-full px-4 overflow-y-auto">
+        <UserConversation />
       </div>
     </div>
   );
