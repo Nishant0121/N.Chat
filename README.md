@@ -44,3 +44,8 @@
 ```
 
 Access the Application Open http://localhost:3000 in your browser.
+
+# Hosted URL
+## On Vercel 
+:: https://n-chat-sable.vercel.app
+  (It Can take time to render the data)
