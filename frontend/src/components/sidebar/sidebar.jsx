@@ -46,10 +46,10 @@ export default function Sidebar() {
     <div
       className={`${
         isSidebarOpen ? "absolute md:relative" : "hidden"
-      } bg-white md:bg-transparent rounded-lg z-10 top-0 left-0 h-[95vh] w-full sm:w-72 flex flex-col items-center shadow-md transition-transform duration-300`}
+      } bg-white md:bg-transparent rounded-lg z-10 top-0 left-0 min-h-screen w-full sm:w-72 flex flex-col shadow-md transition-transform duration-300 ease-in-out`}
     >
       {/* Header Section */}
-      <div className="flex justify-between items-center w-full px-4 py-2 bg-green-500 text-white rounded-t-lg">
+      <div className="sticky top-0 left-0 flex justify-between items-center w-full px-4 py-3 bg-green-500 text-white rounded-t-lg z-20">
         <Link
           to="/allusers"
           className="px-4 py-2 bg-green-700 hover:bg-green-800 rounded-md transition"
@@ -75,14 +75,14 @@ export default function Sidebar() {
       </div>
 
       {/* Search Input */}
-      <div className="mt-4 w-full px-4">
+      <div className="mt-4 px-4">
         <SearchInput />
       </div>
 
       {/* Divider */}
       <div className="w-full border-t my-4"></div>
 
-      {/* User Conversations */}
+      {/* Scrollable User Conversations */}
       <div className="flex-1 w-full px-4 overflow-y-auto">
         <UserConversation />
       </div>
