@@ -49,7 +49,12 @@ export default function Sidebar() {
       } bg-white md:bg-transparent rounded-lg z-10 top-0 left-0 min-h-screen w-full sm:w-72 flex flex-col shadow-md transition-transform duration-300 ease-in-out`}
     >
       {/* Header Section */}
-      <div className="sticky top-0 left-0 flex justify-between items-center w-full px-4 py-3 bg-green-500 text-white rounded-t-lg z-20">
+      <div
+        className="sticky top-0 left-0 flex justify-between items-center w-full px-4 py-3 bg-green-500 text-white rounded-t-lg z-20"
+        style={{
+          paddingTop: "env(safe-area-inset-top)", // Adds safe area padding for mobile browsers
+        }}
+      >
         <Link
           to="/allusers"
           className="px-4 py-2 bg-green-700 hover:bg-green-800 rounded-md transition"
