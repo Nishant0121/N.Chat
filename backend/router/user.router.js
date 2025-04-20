@@ -8,7 +8,7 @@ import ProtectRoute from "../middleware/protectroute.js";
 
 const router = express.Router();
 
-router.get("/", ProtectRoute, getUserForsideBar);
+router.get("/", getUserForsideBar);
 
 router.post("/follow", followUser);
 
